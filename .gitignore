@@ -104,3 +104,5 @@ ENV/
 # data
 *.csv
 *.xlsx
+
+.DS_Store

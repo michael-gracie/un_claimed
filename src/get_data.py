@@ -2,13 +2,13 @@ import pandas as pd
 import config as config
 from time import sleep
 import logging
-import import urllib.parse
+import urllib.parse
 
 logging.getLogger().addHandler(logging.StreamHandler())
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-def pull_properties(search):
+def pull_properties(search, slp = 5):
     """Iteratively pull properties
 
     Parameters
@@ -30,7 +30,7 @@ def pull_properties(search):
         formatted_df = pd.concat((format_table(df), formatted_df))
         counter += 1
         url = create_url(search, counter)
-        sleep(5)
+        sleep(slp)
         logger.info(f'Pulling info for term: {search}, page: {counter}')
         df = pull_table(url)
     return formatted_df
